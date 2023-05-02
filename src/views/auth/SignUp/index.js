@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import {MyTextInput} from '../../../components/common/index'
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-
-
 // const MyCheckbox = ({ children, ...props }) => {
 //     const [field, meta] = useField({ ...props, type: 'checkbox' });
 //     return (
