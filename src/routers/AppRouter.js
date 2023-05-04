@@ -1,27 +1,29 @@
-import * as views from '../views'
-import * as ROUTES from '../constants/Routers'
-import { BrowserRouter, Routes, Route, Router, Switch } from 'react-router-dom';
-import { Navigation } from '../components/common'
+import * as views from "../views";
+import * as ROUTES from "../constants/RouteConstant";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Navigation } from "../components/common";
+import Main from './../components/main';
+import ClientRoute from '../routers/ClientRouting'
 
-import React from 'react';
-import { createBrowserHistory } from 'history';
+import React from "react";
+import { createBrowserHistory } from "history";
 export const history = createBrowserHistory();
 const AppRouter = () => {
-    // console.log(">>>>>>>>>>>>>>>>>>>>>> AppRouter",history);
-    return (
-        <BrowserRouter history={history}>
-            <Routes>
-                <Route
-                    path='/'
-                    element={<views.Home />}
-                />
-                <Route
-                path='/signin'
-                element={<views.SignIn/>}
-                />
-
-            </Routes>
-        </BrowserRouter>
-    )
-}
+  return (
+    <BrowserRouter history={history}>
+      <Routes>
+        <Route path={ROUTES.DEMO} element={<views.Demo />} />
+        <Route path={ROUTES.HOME} element={<views.Home />}>
+          <Route index element={<Main/> }/> 
+          <Route path={ROUTES.CHAT} element={<views.chat />}></Route>
+          <Route path={ROUTES.CHAT} element={<views.chat />}></Route>
+          <Route path={ROUTES.ACTIVITIES} element={<views.Activities />}></Route>
+        </Route>
+        {/* <ClientRoute path={ROUTES.HOME} element={views.Home}></ClientRoute> */}
+        <Route path={ROUTES.SIGNIN} element={<views.SignIn />} />
+        <Route path={ROUTES.SIGNUP} element={<views.SignUp />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 export default AppRouter;
